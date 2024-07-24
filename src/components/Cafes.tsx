@@ -15,6 +15,7 @@ const Cafes: FC<Props> = ({ cafes }) => {
 
   const createCafe = (name: string) => {
     const id = (cafeItems.at(-1)?.id || 0) + 1
+    console.log('id', id)
     addCafe(id, name)
     // Get the current date
     let currentDate = new Date()
