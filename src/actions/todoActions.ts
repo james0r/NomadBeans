@@ -1,5 +1,7 @@
 'use server'
 
+export const dynamic = 'force-dynamic'
+
 import db from "@/db/drizzle"
 import { todo } from "@/db/schema"
 import { asc, eq, not } from "drizzle-orm"
