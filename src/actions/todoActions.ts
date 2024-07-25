@@ -1,10 +1,9 @@
 'use server'
 
-export const dynamic = 'force-dynamic'
-
 import db from "@/db/drizzle"
 import { todo } from "@/db/schema"
 import { asc, eq, not } from "drizzle-orm"
+import { revalidatePath } from 'next/cache'
 
 export const getData = async () => {
   const data = await db.select().from(todo).orderBy(asc(todo.id))
@@ -17,6 +16,8 @@ export const addTodo = async (id: number, text: string) => {
     id: id,
     text: text,
   })
+
+  revalidatePath('/cafes')
 }
 
 export const editTodo = async (id: number, text: string) => {
