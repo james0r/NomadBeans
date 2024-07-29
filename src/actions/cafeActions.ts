@@ -5,6 +5,8 @@ import { cafe } from "@/db/schema"
 import { asc, eq, not } from "drizzle-orm"
 import { revalidatePath } from 'next/cache'
 
+export const dynamic = 'force-dynamic'
+
 export const getData = async () => {
   const data = await db.select().from(cafe).orderBy(asc(cafe.id))
 
@@ -31,4 +33,6 @@ export const editCafe = async (id: number, name: string) => {
 
 export const deleteCafe = async (id: number) => {
   await db.delete(cafe).where(eq(cafe.id, id))
+
+  revalidatePath("/cafes")
 }

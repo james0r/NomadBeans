@@ -1,0 +1,1 @@
+ALTER TABLE "cafe" ADD COLUMN "id2" serial NOT NULL;
