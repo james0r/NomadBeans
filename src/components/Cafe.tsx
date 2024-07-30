@@ -45,16 +45,16 @@ const Cafe: FC<Props> = ({
 
   return (
     <div className="card bg-white image-full w-full shadow-xl">
-      <div className="card-body bg-white">
+      <div className="card-body bg-white dark:bg-base-200">
         <div>
           <input
             type="text"
             value={name}
             onChange={handleNameChange}
             readOnly={!editing}
-            className={`outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full text-black`}
+            className={`outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full text-black dark:text-white`}
           />
-          <div className="text-black">
+          <div className="text-black dark:text-white">
             {cafe.createdAt}
           </div>
         </div>

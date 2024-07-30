@@ -21,5 +21,6 @@ const config: Config = {
   plugins: [
     require('daisyui'),
   ],
+  darkMode: ['selector', '[data-theme="dark"]'],
 }
 export default config
