@@ -5,8 +5,8 @@ import { cafeType } from '@/types'
 
 interface Props {
   cafe: cafeType
-  changeCafeName: (id: number, name: string) => void
-  deleteCafeItem: (id: number) => void
+  changeCafeName: (id: string, name: string) => void
+  deleteCafeItem: (id: string) => void
 }
 
 const Cafe: FC<Props> = ({
@@ -28,7 +28,7 @@ const Cafe: FC<Props> = ({
   }
   // Event handler for saving the edited text
   const handleSave = async () => {
-    changeCafeName(cafe.id, name)
+    changeCafeName(cafe.id!, name)
     setEditing(false)
   }
   // Event handler for canceling the edit mode
@@ -39,12 +39,15 @@ const Cafe: FC<Props> = ({
   // Event handler for deleting a todo item
   const handleDelete = () => {
     if (confirm("Are you sure you want to delete this todo?")) {
-      deleteCafeItem(cafe.id)
+      deleteCafeItem(cafe.id!)
     }
   }
 
   return (
-    <div className="flex items-center gap-2 p-4 border-gray-200 border-solid border rounded-lg">
+    <div
+      data-key={cafe.id}
+      className="flex items-center gap-2 p-4 border-gray-200 border-solid border rounded-lg"
+    >
       {/* Input field for todo text */}
       <div>
         <input

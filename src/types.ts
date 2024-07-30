@@ -1,11 +1,11 @@
 export type todoType = {
-  id: number;
+  id?: string;
   text: string;
   done: boolean;
 };
 
 export type cafeType = {
-  id: number
+  id?: string
   name: string
   createdAt: string
 }

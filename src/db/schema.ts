@@ -15,8 +15,7 @@ export const todo = pgTable("todo", {
 })
 
 export const cafe = pgTable("cafe", {
-  id: integer("id").primaryKey(),
-  id2: serial("id2"),
+  id: uuid("id").primaryKey().defaultRandom().notNull(),
   name: text("text").notNull(),
   createdAt: date('date').defaultNow().notNull(),
 })
