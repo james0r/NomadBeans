@@ -44,55 +44,52 @@ const Cafe: FC<Props> = ({
   }
 
   return (
-    <div
-      data-key={cafe.id}
-      className="flex items-center gap-2 p-4 border-gray-200 border-solid border rounded-lg"
-    >
-      {/* Input field for todo text */}
-      <div>
-        <input
-          type="text"
-          value={name}
-          onChange={handleNameChange}
-          readOnly={!editing}
-          className={`outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full`}
-        />
+    <div className="card bg-white image-full w-full shadow-xl">
+      <div className="card-body bg-white">
         <div>
-          {cafe.createdAt}
+          <input
+            type="text"
+            value={name}
+            onChange={handleNameChange}
+            readOnly={!editing}
+            className={`outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full text-black`}
+          />
+          <div className="text-black">
+            {cafe.createdAt}
+          </div>
         </div>
-      </div>
-      {/* Action buttons for editing, saving, canceling, and deleting */}
-      <div className="flex gap-1 ml-auto">
-        {editing ? (
-          <button
-            onClick={handleSave}
-            className="bg-green-600 text-green-50 rounded px-2 w-14 py-1"
-          >
-            Save
-          </button>
-        ) : (
-          <button
-            onClick={handleEdit}
-            className="bg-blue-400 text-blue-50 rounded w-14 px-2 py-1"
-          >
-            Edit
-          </button>
-        )}
-        {editing ? (
-          <button
-            onClick={handleCancel}
-            className="bg-red-400 w-16 text-red-50 rounded px-2 py-1"
-          >
-            Close
-          </button>
-        ) : (
-          <button
-            onClick={handleDelete}
-            className="bg-red-400 w-16 text-red-50 rounded px-2 py-1"
-          >
-            Delete
-          </button>
-        )}
+        <div className="card-actions justify-end">
+          {editing ? (
+            <button
+              onClick={handleSave}
+              className="btn btn-primary"
+            >
+              Save
+            </button>
+          ) : (
+            <button
+              onClick={handleEdit}
+              className="btn"
+            >
+              Edit
+            </button>
+          )}
+          {editing ? (
+            <button
+              onClick={handleCancel}
+              className="btn"
+            >
+              Close
+            </button>
+          ) : (
+            <button
+              onClick={handleDelete}
+              className="btn btn-error"
+            >
+              Delete
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )
