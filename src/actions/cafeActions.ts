@@ -6,7 +6,9 @@ import { asc, eq, not } from "drizzle-orm"
 import { revalidatePath } from 'next/cache'
 
 export const getData = async () => {
-  const data = await db.select().from(cafe).orderBy(asc(cafe.id))
+  const data = await db.select().from(cafe).orderBy(asc(cafe.createdAt))
+
+  console.log('data', data)
 
   return data
 }

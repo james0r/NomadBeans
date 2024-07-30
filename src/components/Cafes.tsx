@@ -3,7 +3,7 @@
 import { FC, useState, useEffect } from 'react'
 import { cafeType } from '@/types'
 import Cafe from './Cafe'
-import { addCafe, deleteCafe, editCafe } from '@/actions/cafeActions'
+import { addCafe, deleteCafe, editCafe, getData } from '@/actions/cafeActions'
 import AddCafe from '@/components/AddCafe'
 
 interface Props {
@@ -18,21 +18,23 @@ const Cafes: FC<Props> = ({ cafes }) => {
     console.log('cafeItems', cafeItems)
   }, [cafeItems])
 
-  const createCafe = (name: string) => {
+  const createCafe = async (name: string) => {
 
     addCafe(name)
     // Get the current date
-    let currentDate = new Date()
+    // let currentDate = new Date()
+
+    const newCafes = await getData()
 
     // Extract and format year, month, and day using template literals
-    let dateString = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`
+    // let dateString = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`
 
-    setCafeItems((prev) => [...prev, { name: name, createdAt: dateString }])
+    setCafeItems(newCafes)
   }
   // Function to change the text of a todo item
   const changeCafeName = (id: string, name: string) => {
     setCafeItems((prev) =>
-      prev.map((todo) => (todo.id === id ? { ...todo, name } : todo))
+      prev.map((cafe) => (cafe.id === id ? { ...cafe, name } : cafe))
     )
 
     console.log('id', id)
