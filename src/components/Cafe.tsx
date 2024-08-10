@@ -47,16 +47,18 @@ const Cafe: FC<Props> = ({
     <div className="card bg-white image-full w-full shadow-xl">
       <div className="card-body bg-white dark:bg-base-200">
         <div>
-          <input
-            type="text"
-            value={name}
-            onChange={handleNameChange}
-            readOnly={!editing}
-            className={`outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full text-black dark:text-white`}
-          />
-          <div className="text-black dark:text-white">
-            {cafe.createdAt}
-          </div>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">{cafe.createdAt}</span>
+              <span className="label-text-alt"></span>
+            </div>
+            <input
+              type="text"
+              value={name}
+              onChange={handleNameChange}
+              readOnly={!editing}
+              className="input input-bordered w-full max-w-xs text-black dark:text-white mb-4" />
+          </label>
         </div>
         <div className="card-actions justify-end">
           {editing ? (

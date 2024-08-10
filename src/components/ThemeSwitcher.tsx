@@ -13,7 +13,7 @@ const ThemeSwitcher = () => {
     }
   }, [theme])
 
-  const onButtonClick = (e) => {
+  const onButtonClick = (e: any) => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 
